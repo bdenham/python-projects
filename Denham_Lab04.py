@@ -6,16 +6,15 @@
 #                            month, and birth year. It then greets the user by 
 #                            name and tells them the season of the year they were
 #                            born, as well as if their birth year was a leap year.
-
 ###################################################################################
 
 # Constants
 SENTINEL_VALUE = 'zzz'
 USER_NAME_PROMPT = '\nEnter your name (or zzz to quit): '
 BIRTH_MONTH_PROMPT = 'Enter your birth month number (between 1-12, 1 = Jan, 12 = Dec): '
-BIRTH_YEAR_PROMPT = 'Enter your birth year (between 1900-2020): '
+BIRTH_YEAR_PROMPT = 'Enter your 4-digit birth year : '
 INVALID_BIRTH_MONTH_MSG = 'Your birth month must be from 1-12: '
-INVALID_BIRTH_YEAR_MSG = 'Your birth year must be between 1900-2020: '
+INVALID_BIRTH_YEAR_MSG = 'Your birth year must be a 4-digit year: '
 
 # Variables
 userName = ''
@@ -57,9 +56,10 @@ while userName != SENTINEL_VALUE:
                 try:
                     month = int(input(INVALID_BIRTH_MONTH_MSG))
                 except:
-                    print(f'{month} is not a number between 1-12.')
+                    print('Month is invalid.')
         except:
-            print(f'{month_input} is not an integer.')
+            print('Month is invalid.')
+
 
     # SEASON determined from month
     if month == 12 or month == 1 or month == 2:
@@ -72,19 +72,20 @@ while userName != SENTINEL_VALUE:
         season = 'fall'  # because there's nothing else it could be.
 
     # YEAR input prompt and validation
+    
+     # YEAR input prompt and validation
     year = None
     while year is None:
         year_input = input(BIRTH_YEAR_PROMPT)
         try:
             year = int(year_input)
-            # barely valid birth years:
-            while year < 1900 or year > 2020:
+            while year < 1000 or year > 9999:
                 try:
                     year = int(input(INVALID_BIRTH_YEAR_MSG))
                 except:
-                    print(f'{year} is not between 1900-2020.')
+                    print('Year is invalid.')
         except:
-            print(f'{year_input} is not an integer.')
+            print('Year is invalid.')
 
     # MAIN output
     print(f'Hello {userName}! You were born in the {season} of {year}, which {isLeapYear(year)} a leap year.')
