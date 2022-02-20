@@ -30,9 +30,7 @@ def isfloat(num):
 
 
 def isLeapYear(num):
-    if num % 400 == 0:
-        return 'was'
-    elif num % 4 == 0:
+    if num % 4 == 0 and (num / 400) % 2 == 0: # this should tell us if it's and even number
         return 'was'
     else:
         return 'was not'
