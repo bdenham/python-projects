@@ -10,9 +10,6 @@
 ###################################################################################
 
 # Constants
-from curses.ascii import isalnum
-
-
 SENTINEL_VALUE = 'zzz'
 USER_NAME_PROMPT = '\nEnter your name (or zzz to quit): '
 BIRTH_MONTH_PROMPT = 'Enter your birth month number (between 1-12, 1 = Jan, 12 = Dec): '
@@ -49,7 +46,6 @@ while userName != SENTINEL_VALUE:
     # Sentinel controlled exit
     if userName == SENTINEL_VALUE:
         break
-
 
     # MONTH input prompt and validation
     month = None
